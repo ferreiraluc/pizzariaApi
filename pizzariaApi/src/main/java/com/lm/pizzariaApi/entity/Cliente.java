@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Cliente", schema = "public")
-public class Cliente extends AbastractEntity {
+public class Cliente extends AbstractEntity {
 
     @Getter @Setter
     private int Cliente_ID;
