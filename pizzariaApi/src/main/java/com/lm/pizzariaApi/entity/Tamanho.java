@@ -1,6 +1,6 @@
 package com.lm.pizzariaApi.entity;
 
-public enum Tamanhos {
+public enum Tamanho {
     P,
     M,
     G,

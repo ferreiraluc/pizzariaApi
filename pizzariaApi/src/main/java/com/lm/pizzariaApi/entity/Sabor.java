@@ -1,6 +1,6 @@
 package com.lm.pizzariaApi.entity;
 
-public enum Sabores {
+public enum Sabor {
     calabresa,
     quatroqueijos,
     stroggnoff,

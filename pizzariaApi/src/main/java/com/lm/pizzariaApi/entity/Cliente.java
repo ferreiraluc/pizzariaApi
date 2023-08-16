@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Cliente", schema = "public")
+@Table(name = "clientes", schema = "public")
 public class Cliente extends AbstractEntity {
 
 

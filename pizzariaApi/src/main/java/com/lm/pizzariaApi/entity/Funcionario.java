@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Funcionarios extends AbstractEntity {
+public class Funcionario extends AbstractEntity {
     @Getter
     @Setter
     private String Nome;
@@ -14,10 +14,10 @@ public class Funcionarios extends AbstractEntity {
     @Getter @Setter
     private String Endereco;
 
-    public Funcionarios(String nome, String telefone, String endereco) {
+    public Funcionario(String nome, String telefone, String endereco) {
         Nome = nome;
         Telefone = telefone;
         Endereco = endereco;
     }
-    public Funcionarios(){}
+    public Funcionario(){}
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Produtos extends AbstractEntity {
+public class Produto extends AbstractEntity {
 
     @Getter @Setter
     private String produto_item;
@@ -17,13 +17,13 @@ public class Produtos extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "pedidos_id")
-    private Pedidos pedidos;
+    private Pedido pedidos;
 
-    public Pedidos getPedidos() {
+    public Pedido getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(Pedidos pedidos) {
+    public void setPedidos(Pedido pedidos) {
         this.pedidos = pedidos;
     }
 
