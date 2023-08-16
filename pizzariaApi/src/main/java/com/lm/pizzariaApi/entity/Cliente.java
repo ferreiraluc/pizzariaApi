@@ -10,8 +10,6 @@ import lombok.Setter;
 @Table(name = "clientes", schema = "public")
 public class Cliente extends AbstractEntity {
 
-
-
     @Getter @Setter
     @Column(name = "Nome")
     private String nome;
@@ -29,5 +27,30 @@ public class Cliente extends AbstractEntity {
         this.telefone = telefone;
         this.endereco = endereco;
     }
-    public Cliente(){}
+
+    public Cliente() {}
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 }
