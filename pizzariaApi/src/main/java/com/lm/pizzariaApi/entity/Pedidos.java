@@ -35,5 +35,4 @@ public class Pedidos extends AbstractEntity {
     private boolean entrega;
 
 
-
 }

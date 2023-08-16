@@ -8,9 +8,12 @@ import lombok.Setter;
 
 @Entity
 public class Produtos extends AbstractEntity {
-    @Getter
-    @Setter
+
+    @Getter @Setter
     private String produto_item;
+
+    @Getter @Setter
+    private int produto_preco;
 
     @ManyToOne
     @JoinColumn(name = "pedidos_id")
