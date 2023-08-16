@@ -1,8 +1,6 @@
 package com.lm.pizzariaApi.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,9 +8,31 @@ import lombok.Setter;
 @Table(name = "pedidos", schema = "public")
 public class Pedidos extends AbstractEntity {
 
-    @Getter
-    @Setter
+    @Getter @Setter
+    @Column(name = "pedido_id")
+    private int pedido_ID;
+
+
+    @Getter @Setter
+    @Column(name = "produto_id")
+    private int produto_ID;
+
+    @Column(name = "cliente_id")
+    @Getter @Setter
+    private int cliente_ID;
+
+    @Getter @Setter
     private String observacao;
+
+    @Getter @Setter
+    @Column(name = "funcionario_id")
+    private int funcionario_ID;
+
+    @Getter @Setter
+    private String status;
+
+    @Getter @Setter
+    private boolean entrega;
 
 
 
