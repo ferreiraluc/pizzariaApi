@@ -6,6 +6,7 @@ import com.lm.pizzariaApi.repository.FuncionarioRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -44,8 +45,13 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteFuncionario(@PathVariable Long id){
-        funcionarioRepository.deleteById(id);
+    public ResponseEntity<String> deleteFuncionario(@PathVariable Long id){
+        try {
+            funcionarioRepository.deleteById(id);
+            return ResponseEntity.ok("Funcionario deletado com sucesso");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao deletar funcionário: " + e.getMessage());
+        }
     }
 
 
