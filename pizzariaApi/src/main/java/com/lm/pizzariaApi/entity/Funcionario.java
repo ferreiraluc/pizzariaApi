@@ -6,18 +6,21 @@ import lombok.Setter;
 
 @Entity
 public class Funcionario extends AbstractEntity {
-    @Getter
-    @Setter
-    private String Nome;
+
     @Getter @Setter
-    private String Telefone;
+    private String nome;
+
     @Getter @Setter
-    private String Endereco;
+    private String telefone;
+
+    @Getter @Setter
+    private String endereco;
 
     public Funcionario(String nome, String telefone, String endereco) {
-        Nome = nome;
-        Telefone = telefone;
-        Endereco = endereco;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
-    public Funcionario(){}
+
+    public Funcionario() {}
 }

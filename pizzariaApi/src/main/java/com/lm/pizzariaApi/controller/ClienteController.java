@@ -1,11 +1,9 @@
 package com.lm.pizzariaApi.controller;
 
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/cliente")
-
+@RestController
+@RequestMapping("/api/cliente")
 public class ClienteController {
 }
