@@ -50,4 +50,15 @@ public class PedidoController {
         pedidoService.deleteById(id);
         return new ResponseEntity<>("Pedido deletado com sucesso!", HttpStatus.OK);
     }
+
+    @GetMapping("/finalizados")
+    public ResponseEntity<?> getPedidosFinalizados() {
+        List<Pedido> finalizados = pedidoService.findPedidosFinalizados();
+
+        if (finalizados.isEmpty()) {
+            return new ResponseEntity<>("Não foi encontrado nenhum pedido", HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok(finalizados);
+    }
 }

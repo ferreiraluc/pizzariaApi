@@ -30,5 +30,9 @@ public class PedidoService {
         pedidoRepository.deleteById(id);
     }
 
+    public List<Pedido> findPedidosFinalizados() {
+        return pedidoRepository.findByStatus("finalizado");
+    }
+
 
 }
