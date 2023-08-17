@@ -1,4 +1,4 @@
-package com.lm.pizzariaApi.services;
+package com.lm.pizzariaApi.service;
 
 import com.lm.pizzariaApi.entity.Cliente;
 import com.lm.pizzariaApi.repository.ClienteRepository;

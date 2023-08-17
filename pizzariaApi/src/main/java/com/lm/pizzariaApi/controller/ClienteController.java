@@ -4,10 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lm.pizzariaApi.entity.Cliente;
 import com.lm.pizzariaApi.repository.ClienteRepository;
-import com.lm.pizzariaApi.services.ClienteServices;
+import com.lm.pizzariaApi.service.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
