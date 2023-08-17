@@ -53,6 +53,17 @@ Este projeto fornece uma API RESTful para gerenciar pedidos, produtos e funcion�
   - `GET /api/pedido`: Retorna todos os pedidos.
   - `GET /api/pedido/{id}`: Retorna os detalhes de um pedido específico.
   - `POST /api/pedido`: Cria um novo pedido.
+  - ```bash
+    {
+    "pedido_ID": 123,
+    "produto_ID": 456,
+    "cliente_ID": 789,
+    "observacao": "Alguma observação aqui",
+    "funcionario_ID": 101,
+    "status": "Pendente",
+    "entrega": true
+    }
+    ```
   - `PUT /api/pedido/{id}`: Atualiza um pedido existente.
   - `DELETE /api/pedido/{id}`: Deleta um pedido.
 
