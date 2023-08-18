@@ -10,7 +10,7 @@ public class Pedido extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "pedido_id")
-    private int pedido_ID;
+    private Long pedido_ID;
 
 
     @Getter @Setter
