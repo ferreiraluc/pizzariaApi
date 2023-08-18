@@ -4,10 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lm.pizzariaApi.entity.Cliente;
 import com.lm.pizzariaApi.repository.ClienteRepository;
-import com.lm.pizzariaApi.services.ClienteServices;
+import com.lm.pizzariaApi.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
 public class ClienteController {
 
     @Autowired
-    ClienteServices clienteServices;
+    ClienteService clienteService;
     @Autowired
     ClienteRepository clienteRepository;
 
@@ -39,7 +38,7 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody Cliente cliente) {
         try {
-            Cliente novoCliente = clienteServices.CriarCliente(cliente);
+            Cliente novoCliente = clienteService.CriarCliente(cliente);
             return ResponseEntity.ok(novoCliente);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao cadastrar cliente: " + e.getMessage());
@@ -49,7 +48,7 @@ public class ClienteController {
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
         try {
-            Cliente clienteAtualizado = clienteServices.atualizarCliente(id, cliente.getNome(), cliente.getTelefone(), cliente.getEndereco());
+            Cliente clienteAtualizado = clienteService.atualizarCliente(id, cliente.getNome(), cliente.getTelefone(), cliente.getEndereco());
             return ResponseEntity.ok(clienteAtualizado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao atualizar cliente: " + e.getMessage());
@@ -58,7 +57,7 @@ public class ClienteController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletar(@PathVariable Long id) {
         try {
-            clienteServices.deletarCliente(id);
+            clienteService.deletarCliente(id);
             return ResponseEntity.ok("Cliente deletado com sucesso");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao deletar cliente: " + e.getMessage());

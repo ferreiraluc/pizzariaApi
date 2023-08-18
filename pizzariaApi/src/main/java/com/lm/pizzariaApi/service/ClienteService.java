@@ -1,4 +1,4 @@
-package com.lm.pizzariaApi.services;
+package com.lm.pizzariaApi.service;
 
 import com.lm.pizzariaApi.entity.Cliente;
 import com.lm.pizzariaApi.repository.ClienteRepository;
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClienteServices {
+public class ClienteService {
     private final ClienteRepository clienteRepository;
 
     @Autowired
-    public ClienteServices(ClienteRepository clienteRepository) {
+    public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 
