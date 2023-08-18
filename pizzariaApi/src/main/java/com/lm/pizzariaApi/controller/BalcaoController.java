@@ -18,6 +18,13 @@ public class BalcaoController {
     @Autowired
     private BalcaoService balcaoService;
 
+    @GetMapping("")
+    public ResponseEntity<List<Pedido>> verPedidos() {
+        return ResponseEntity.ok(balcaoService.visualizarTodosPedidos());
+    }
+
+
+
     @GetMapping("/todos-pedidos")
     public ResponseEntity<List<Pedido>> visualizarTodosPedidos() {
         return ResponseEntity.ok(balcaoService.visualizarTodosPedidos());
