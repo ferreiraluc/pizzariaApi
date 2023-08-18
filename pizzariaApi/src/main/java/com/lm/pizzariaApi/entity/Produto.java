@@ -19,6 +19,7 @@ public class Produto extends AbstractEntity {
     @Getter @Setter
     private int produto_preco;
 
+    @Getter @Setter
     @ManyToOne
     @JoinColumn(name = "pedidos_id")
     private Pedido pedidos;
