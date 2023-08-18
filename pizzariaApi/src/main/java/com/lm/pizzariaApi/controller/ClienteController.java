@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lm.pizzariaApi.entity.Cliente;
 import com.lm.pizzariaApi.repository.ClienteRepository;
-import com.lm.pizzariaApi.service.ClienteServices;
+import com.lm.pizzariaApi.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ClienteController {
 
     @Autowired
-    ClienteServices clienteServices;
+    ClienteService clienteServices;
     @Autowired
     ClienteRepository clienteRepository;
 
