@@ -68,20 +68,56 @@ Este projeto fornece uma API RESTful para gerenciar pedidos, produtos e funcion�
   - `DELETE /api/pedido/{id}`: Deleta um pedido.
 
 - **Funcionários**:
-  - ## Falta
+  - `GET /api/funcionario`: Retorna todos os funcionários.
+  - `GET /api/funcionario/{id}`: Retorna os detalhes de um funcionário específico.
+  - `POST /api/funcionario`: Adiciona um novo funcionário.
+  - ```bash
+    {
+    "id": 123,
+    "nome": "Nome do Funcionário",
+    "telefone": "99999-9999",
+    "endereco": "Endereço aqui"
+    }
+    ```
+  - `PUT /api/funcionario/{id}`: Atualiza os detalhes de um funcionário existente.
+  - `DELETE /api/funcionario/{id}`: Deleta um funcionário.
+  - 
+- **Clientes**:
+  - `GET /api/cliente`: Retorna todos os clientes.
+  - `GET /api/cliente/{id}`: Retorna os detalhes de um cliente específico.
+  - `POST /api/cliente`: Adiciona um novo cliente.
+  - ```bash
+    {
+    "id": 123,
+    "nome": "Nome do Cliente",
+    "telefone": "99999-9999",
+    "endereco": "Endereço aqui"
+    }
+    ```
+  - `PUT /api/cliente/{id}`: Atualiza os detalhes de um cliente existente.
+  - `DELETE /api/cliente/{id}`: Deleta um cliente.
 
+- **Balcão**:
+  - `GET /api/balcao`: Retorna todos os pedidos.
+  - `GET /api/balcao/todos-pedidos`: Retorna todos os pedidos.
+  - `GET /api/balcao/pedidos-finalizados`: Retorna todos os pedidos que estão finalizados.
+  - `GET /api/balcao/pedidos-pendentes`: Retorna todos os pedidos que estão pendentes.
+  - `GET /api/balcao/pedidos-entregues`: Retorna todos os pedidos que foram entregues.
+  - `GET /api/balcao/funcionarios`: Retorna todos os funcionários.
+ 
+    
 - **Produtos**:
-  - ## Falta
+  - `GET /api/produto`: Retorna todos os produtos. Caso não existam produtos, retorna uma mensagem de erro.
+  - `GET /api/produto/{id}`: Retorna os detalhes de um produto específico com base em seu ID.
+  - `POST /api/produto`: Adiciona um novo produto.
+  - ```bash
+    {
+    "id": 123,
+    "nome": "Nome do Produto",
+    "descricao": "Descrição aqui",
+    "preco": 25.50
+    }
+    ```
+  - `DELETE /api/produto/{id}`: Deleta um produto com base em seu ID.
 
-## Contribuição
-
-1. Faça o Fork do projeto.
-2. Crie sua Feature Branch: `git checkout -b feature/NovaFuncionalidade`.
-3. Faça o commit de suas mudanças: `git commit -m 'Adiciona alguma NovaFuncionalidade'`.
-4. Faça o Push da branch: `git push origin feature/NovaFuncionalidade`.
-5. Abra um Pull Request.
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE.md` para mais detalhes.
 
