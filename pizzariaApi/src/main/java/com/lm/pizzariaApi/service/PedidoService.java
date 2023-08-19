@@ -1,10 +1,8 @@
 package com.lm.pizzariaApi.service;
-
 import com.lm.pizzariaApi.entity.Pedido;
 import com.lm.pizzariaApi.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
