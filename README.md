@@ -112,10 +112,9 @@ Este projeto fornece uma API RESTful para gerenciar pedidos, produtos e funcion�
   - `POST /api/produto`: Adiciona um novo produto.
   - ```bash
     {
-    "id": 123,
-    "nome": "Nome do Produto",
-    "descricao": "Descrição aqui",
-    "preco": 25.50
+    "sabor" : "Marguerita",
+    "produto_item" : "pizza",
+    "tamanho" : "P"
     }
     ```
   - `DELETE /api/produto/{id}`: Deleta um produto com base em seu ID.
