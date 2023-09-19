@@ -5,6 +5,8 @@ import com.lm.pizzariaApi.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteService {
     private final ClienteRepository clienteRepository;
@@ -17,6 +19,8 @@ public class ClienteService {
     public Cliente BuscarPorId(Long id){return clienteRepository.findById(id).orElse(null);}
 
     public Cliente CriarCliente(Cliente cliente){return clienteRepository.save(cliente);}
+
+    public List<Cliente> findAll(){ return clienteRepository.findAll(); }
 
     public Cliente atualizarCliente(Long clienteId, String novoNome, String novoTelefone, String novoEndereco) {
 
