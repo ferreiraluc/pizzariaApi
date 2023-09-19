@@ -45,6 +45,28 @@ public class BalcaoController {
         return ResponseEntity.ok(finalizados);
     }
 
+    @GetMapping("/pedidos-pendentes")
+    public ResponseEntity<List<Pedido>> visualizarPedidosPendentes() {
+        List<Pedido> pendentes = balcaoService.visualizarPedidosPendentes();
+
+        if (pendentes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok(pendentes);
+    }
+
+    @GetMapping("/pedidos-entregues")
+    public ResponseEntity<List<Pedido>> visualizarPedidosEntregues() {
+        List<Pedido> entregues = balcaoService.visualizarPedidosEntregues();
+
+        if (entregues.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok(entregues);
+    }
+
     @GetMapping("/funcionarios")
     public ResponseEntity<List<Funcionario>> visualizarTodosFuncionarios() {
         List<Funcionario> funcionarios = funcionarioService.getAllFuncionarios();
@@ -55,6 +77,8 @@ public class BalcaoController {
 
         return ResponseEntity.ok(funcionarios);
     }
+
+
 
 
 
