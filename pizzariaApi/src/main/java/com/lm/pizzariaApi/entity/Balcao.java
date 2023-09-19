@@ -1,5 +1,6 @@
 package com.lm.pizzariaApi.entity;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Balcao",schema = "public")
@@ -82,7 +83,7 @@ public class Balcao extends AbstractEntity {
     )
     private List<Produto> produtos = new ArrayList<>();
 
-    */
+
 
 
     @ManyToOne
@@ -97,5 +98,5 @@ public class Balcao extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "funcionario_id", referencedColumnName = "id")
     private Funcionario funcionario;
-
+*/
 }
