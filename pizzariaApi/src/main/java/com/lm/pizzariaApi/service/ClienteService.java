@@ -20,7 +20,7 @@ public class ClienteService {
 
     public Cliente CriarCliente(Cliente cliente){return clienteRepository.save(cliente);}
 
-    public List<Cliente> findAll(){ return clienteRepository.findAll(); }
+    public List<Cliente> listarTodosClientes(){ return clienteRepository.findAll(); }
 
     public Cliente atualizarCliente(Long clienteId, String novoNome, String novoTelefone, String novoEndereco) {
 
