@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lm.pizzariaApi.controller.BalcaoController;
 import com.lm.pizzariaApi.entity.Pedido;
 import com.lm.pizzariaApi.service.BalcaoService;
-import com.lm.pizzariaApi.service.PedidoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,8 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.springframework.boot.autoconfigure.AutoConfigurationPackages.has;
 
 @WebMvcTest(BalcaoController.class)
 public class BalcaoTeste {
