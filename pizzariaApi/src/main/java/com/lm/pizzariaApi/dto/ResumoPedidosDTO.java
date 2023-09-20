@@ -2,6 +2,7 @@ package com.lm.pizzariaApi.dto;
 
 public class ResumoPedidosDTO {
 
+
     private long pedidosEmAndamento;
     private long pedidosFinalizados;
 
