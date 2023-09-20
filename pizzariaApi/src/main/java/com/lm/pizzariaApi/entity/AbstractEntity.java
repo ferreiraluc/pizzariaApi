@@ -7,7 +7,7 @@ import lombok.Getter;
 public abstract class AbstractEntity {
     @Id
     @Getter
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    public Long id;
 }
