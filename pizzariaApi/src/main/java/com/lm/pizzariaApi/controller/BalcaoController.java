@@ -76,6 +76,7 @@ public class BalcaoController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+
         return ResponseEntity.ok(funcionarios);
     }
 
