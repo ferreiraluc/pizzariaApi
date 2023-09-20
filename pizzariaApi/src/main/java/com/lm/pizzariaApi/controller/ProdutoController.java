@@ -1,5 +1,6 @@
 package com.lm.pizzariaApi.controller;
 
+import com.lm.pizzariaApi.entity.Cliente;
 import com.lm.pizzariaApi.entity.Produto;
 import com.lm.pizzariaApi.repository.ProdutoRepository;
 import com.lm.pizzariaApi.service.ProdutoService;
@@ -50,6 +51,16 @@ public class ProdutoController {
             return ResponseEntity.ok("Produto deletado com sucesso");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao deletar produto: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+        try {
+            Produto produtoAtualizado = produtoService.atualizarProduto(id, produto.getProduto_item(), produto.getSabor(), produto.getProduto_preco(), produto.getPedidos(), produto.getTamanho());
+            return ResponseEntity.ok(produtoAtualizado);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao atualizar Produto: " + e.getMessage());
         }
     }
 }

@@ -26,7 +26,6 @@ public class ClienteControllerTest {
 
     @Test
     public void ClienteTestGetAll() throws Exception {
-        // Crie um cliente com dados válidos
         Cliente cliente = new Cliente("Matheus", "9851578514", "Rua Blabla");
 
         mockMvc.perform(post("/api/cliente")
