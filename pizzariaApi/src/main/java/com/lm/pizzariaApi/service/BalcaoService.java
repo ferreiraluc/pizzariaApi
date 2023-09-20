@@ -40,4 +40,13 @@ public class BalcaoService {
         return pedidoRepository.findByStatus("entregue");
     }
 
+    public long countPedidosPendentes() {
+        return pedidoRepository.countByStatus("pendente");
+    }
+
+    public long countPedidosFinalizados() {
+        return pedidoRepository.countByStatus("finalizado");
+    }
+
+
 }
