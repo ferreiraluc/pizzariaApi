@@ -1,19 +1,22 @@
 package com.lm.pizzariaApi.service;
 
+import com.lm.pizzariaApi.entity.Funcionario;
 import com.lm.pizzariaApi.entity.Pedido;
 import com.lm.pizzariaApi.entity.Produto;
+import com.lm.pizzariaApi.repository.FuncionarioRepository;
 import com.lm.pizzariaApi.repository.PedidoRepository;
 import com.lm.pizzariaApi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BalcaoService {
 
-    private static final Logger logger = LoggerFactory.getLogger(BalcaoService.class);
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
 
     @Autowired
     private PedidoRepository pedidoRepository;
@@ -22,42 +25,19 @@ public class BalcaoService {
     private ProdutoRepository produtoRepository;
 
     public List<Pedido> visualizarTodosPedidos() {
-        List<Pedido> pedidos = pedidoRepository.findAll();
-        logger.info("Visualizando todos os pedidos: {}", pedidos);
-        return pedidos;
+        return pedidoRepository.findAll();
     }
 
     public List<Pedido> visualizarPedidosFinalizados() {
-        List<Pedido> finalizados = pedidoRepository.findByStatus("finalizados");
-        if (finalizados.isEmpty()) {
-            logger.info("Não foi encontrado nenhum pedido finalizado.");
-        } else {
-            logger.info("Visualizando pedidos finalizados: {}", finalizados);
-        }
-        return finalizados;
+        return pedidoRepository.findByStatus("finalizado");
     }
 
     public List<Pedido> visualizarPedidosPendentes() {
-        List<Pedido> pendentes = pedidoRepository.findByStatus("pendente");
-        if (pendentes.isEmpty()) {
-            logger.info("Não foi encontrado nenhum pedido pendente.");
-        } else {
-            logger.info("Visualizando pedidos pendentes: {}", pendentes);
-        }
-        return pendentes;
+        return pedidoRepository.findByStatus("pendente");
     }
 
     public List<Pedido> visualizarPedidosEntregues() {
-        List<Pedido> entregues = pedidoRepository.findByStatus("entregue");
-        if (entregues.isEmpty()) {
-            logger.info("Não foi encontrado nenhum pedido entregue.");
-        } else {
-            logger.info("Visualizando pedidos entregues: {}", entregues);
-        }
-        return entregues;
+        return pedidoRepository.findByStatus("entregue");
     }
 
-
-
-    // Outros métodos para visualização conforme necessário...
 }
