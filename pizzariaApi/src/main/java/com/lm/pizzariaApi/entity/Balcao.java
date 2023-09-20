@@ -89,6 +89,4 @@ public class Balcao extends AbstractEntity {
     private List<Produto> produtos = new ArrayList<>();
 
     */
-
-
 }
