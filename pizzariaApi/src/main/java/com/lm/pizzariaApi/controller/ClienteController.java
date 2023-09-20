@@ -22,8 +22,8 @@ public class ClienteController {
     ClienteRepository clienteRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable Long id){
-        return  ResponseEntity.ok().body(this.clienteRepository.findById(id));
+    public ResponseEntity<?> BuscarPorID(@PathVariable Long id){
+        return  ResponseEntity.ok().body(this.clienteService.BuscarPorId(id));
     }
 
     @GetMapping
@@ -34,7 +34,7 @@ public class ClienteController {
             return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.ok().body(clientes);
+        return ResponseEntity.ok().body("Ok");
     }
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody Cliente cliente) {

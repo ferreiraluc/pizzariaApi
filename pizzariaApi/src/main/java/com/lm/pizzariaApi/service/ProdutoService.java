@@ -1,5 +1,7 @@
 package com.lm.pizzariaApi.service;
 
+import com.lm.pizzariaApi.entity.Cliente;
+import com.lm.pizzariaApi.entity.Pedido;
 import com.lm.pizzariaApi.entity.Produto;
 import com.lm.pizzariaApi.entity.Tamanho;
 import com.lm.pizzariaApi.repository.ClienteRepository;
@@ -69,4 +71,31 @@ public class ProdutoService {
                 .orElseThrow(() -> new RuntimeException("Produto não Encontrado"));
         produtoRepository.delete(produto);
     }
+
+    public Produto atualizarProduto(Long produtoId, String novoSabor, String novoProduto_item, int novoProduto_preco, Pedido novoPedidos, Tamanho novoTamanho) {
+
+        Produto produto = produtoRepository.findById(produtoId)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+
+        if (novoSabor != null) {
+            produto.setSabor(novoSabor);
+        }
+        if (novoProduto_item != null) {
+            produto.setProduto_item(novoProduto_item);
+        }
+        if (novoProduto_preco != 0) {
+            produto.setProduto_preco(novoProduto_preco);
+        }
+        if (novoPedidos != null){
+            produto.setPedidos(novoPedidos);
+        }
+        if (novoTamanho != null){
+            produto.setTamanho(novoTamanho);
+        }
+
+
+        return produtoRepository.save(produto);
+    }
+
 }
