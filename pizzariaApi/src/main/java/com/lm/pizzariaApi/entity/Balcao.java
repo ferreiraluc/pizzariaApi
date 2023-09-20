@@ -1,11 +1,6 @@
 package com.lm.pizzariaApi.entity;
-
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import java.util.ArrayList;
-import java.util.List;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Balcao",schema = "public")
@@ -88,5 +83,20 @@ public class Balcao extends AbstractEntity {
     )
     private List<Produto> produtos = new ArrayList<>();
 
-    */
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "pedidos_id", referencedColumnName = "id")
+    private Pedido pedido;
+
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id", referencedColumnName = "id")
+    private Funcionario funcionario;
+*/
 }
