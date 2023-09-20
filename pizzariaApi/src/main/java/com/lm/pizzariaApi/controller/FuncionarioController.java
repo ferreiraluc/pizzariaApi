@@ -22,6 +22,7 @@ public class FuncionarioController {
     @GetMapping
     public List<Funcionario> getAllFuncionarios(){
         return funcionarioRepository.findAll();
+
     }
 
     @GetMapping("/{id}")
