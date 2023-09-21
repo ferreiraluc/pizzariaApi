@@ -1,4 +1,4 @@
-package com.lm.apipizzaria.controller.Testes;
+package com.lm.apipizzaria.controller.testes;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

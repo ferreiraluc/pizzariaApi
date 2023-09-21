@@ -1,4 +1,4 @@
-package com.lm.apipizzaria.controller.Testes;
+package com.lm.apipizzaria.controller.testes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lm.apipizzaria.entity.Produto;
@@ -47,8 +47,8 @@ public class ProdutoControllerTest {
 
         mockMvc.perform(get("/api/produto/{id}", produtoCriadoId))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.produto_item").value(produto.getProduto_item()))
-                .andExpect(jsonPath("$.produto_preco").value(produto.getProduto_preco()))
+                .andExpect(jsonPath("$.produto_item").value(produto.getProdutoitem()))
+                .andExpect(jsonPath("$.produto_preco").value(produto.getProdutopreco()))
                 .andExpect(jsonPath("$.sabor").value(produto.getSabor()));
     }
 
@@ -65,8 +65,8 @@ public class ProdutoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(produto)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.produto_item").value(produto.getProduto_item()))
-                .andExpect(jsonPath("$.produto_preco").value(produto.getProduto_preco()))
+                .andExpect(jsonPath("$.produto_item").value(produto.getProdutoitem()))
+                .andExpect(jsonPath("$.produto_preco").value(produto.getProdutopreco()))
                 .andExpect(jsonPath("$.sabor").value(produto.getSabor()));
     }
 
@@ -91,7 +91,7 @@ public class ProdutoControllerTest {
 
     @Test
     public void testAtualizarProduto() throws Exception{
-        Produto produto = new Produto("PizzaVelha", 50, null, Tamanho.P, "Quatro Queijos");
+        Produto produto = new Produto("PizzaVelha", 50, null, Tamanho.P, "Lombinho");
 
         MvcResult postResult =  mockMvc.perform(post("/api/produto")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -102,10 +102,10 @@ public class ProdutoControllerTest {
         Produto produtoCriado = objectMapper.readValue(postResult.getResponse().getContentAsString(), Produto.class);
         Long produtoCriadoId = produtoCriado.getId();
 
-        produto.setProduto_item("PizzaNova");
-        produto.setProduto_preco(60);
+        produto.setProdutoitem("PizzaNova");
+        produto.setProdutopreco(60);
         produto.setTamanho(Tamanho.M);
-        produto.setSabor("Calabresa");
+        produto.setSabor("Mexicana");
         produto.setPedidos(null);
 
         mockMvc.perform(put("/api/produto/{id}",produtoCriadoId)

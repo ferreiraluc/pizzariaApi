@@ -19,31 +19,31 @@ public class ProdutoController {
     ProdutoRepository produtoRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable Long id){
+    public ResponseEntity<Produto> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(this.produtoRepository.findById(id).orElse(null));
     }
 
     @GetMapping
-    public ResponseEntity<?> findAll(){
+    public ResponseEntity<List<Produto>> findAll(){
         List<Produto> produtos = this.produtoRepository.findAll();
 
         if (produtos.isEmpty()){
-            return  ResponseEntity.badRequest().body("Produtos Está Vazia");
+            return  ResponseEntity.badRequest().body(null);
         }
 
         return ResponseEntity.ok().body(produtos);
     }
     @PostMapping
-    public ResponseEntity<?> cadastrarProduto(@RequestBody Produto produto){
+    public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto produto){
         try{
             Produto novoProduto = produtoService.criarProduto(produto);
             return  ResponseEntity.ok(novoProduto);
         }   catch (Exception e){
-            return  ResponseEntity.badRequest().body("Erro ao Cadastrar Novo Produto");
+            return  ResponseEntity.badRequest().body(null);
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarProduto(@PathVariable Long id) {
+    public ResponseEntity<String> deletarProduto(@PathVariable Long id) {
         try {
             produtoService.deletarProduto(id);
             return ResponseEntity.ok("Produto deletado com sucesso");
@@ -53,12 +53,12 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
         try {
-            Produto produtoAtualizado = produtoService.atualizarProduto(id, produto.getProduto_item(), produto.getSabor(), produto.getProduto_preco(), produto.getPedidos(), produto.getTamanho());
+            Produto produtoAtualizado = produtoService.atualizarProduto(id, produto.getProdutoitem(), produto.getSabor(), produto.getProdutopreco(), produto.getPedidos(), produto.getTamanho());
             return ResponseEntity.ok(produtoAtualizado);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Erro ao atualizar Produto: " + e.getMessage());
+            return ResponseEntity.badRequest().body(null);
         }
     }
 }

@@ -16,13 +16,13 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public Cliente BuscarPorId(Long id){return clienteRepository.findById(id).orElse(null);}
+    public Cliente buscarporid(Long id){return clienteRepository.findById(id).orElse(null);}
 
-    public Cliente CriarCliente(Cliente cliente){return clienteRepository.save(cliente);}
+    public Cliente criarcliente(Cliente cliente){return clienteRepository.save(cliente);}
 
     public List<Cliente> listarTodosClientes(){ return clienteRepository.findAll(); }
 
-    public Cliente atualizarCliente(Long clienteId, String novoNome, String novoTelefone, String novoEndereco) {
+    public Cliente atualizarcliente(Long clienteId, String novoNome, String novoTelefone, String novoEndereco) {
 
         Cliente cliente = clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
@@ -42,7 +42,7 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public void deletarCliente(Long clienteId) {
+    public void deletarcliente(Long clienteId) {
         Cliente cliente = clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
         clienteRepository.delete(cliente);

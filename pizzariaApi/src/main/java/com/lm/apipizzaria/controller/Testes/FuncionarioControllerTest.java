@@ -1,4 +1,4 @@
-package com.lm.apipizzaria.controller.Testes;
+package com.lm.apipizzaria.controller.testes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lm.apipizzaria.entity.Funcionario;
@@ -25,7 +25,7 @@ public class FuncionarioControllerTest {
 
     @Test
     public void funcionarioTestGetAll() throws Exception {
-        Funcionario funcionario = new Funcionario("Lucas", "123456789", "Rua XYZ");
+        Funcionario funcionario = new Funcionario("Lana", "7895231", "Rua XYZ");
 
         mockMvc.perform(post("/api/funcionario")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -48,7 +48,7 @@ public class FuncionarioControllerTest {
 
     @Test
     public void funcionarioTestPut() throws Exception {
-        Funcionario funcionario = new Funcionario("Lucas", "123456789", "Rua XYZ");
+        Funcionario funcionario = new Funcionario("Malia", "59452944", "Kennegiy");
         MvcResult result = mockMvc.perform(post("/api/funcionario")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(funcionario)))

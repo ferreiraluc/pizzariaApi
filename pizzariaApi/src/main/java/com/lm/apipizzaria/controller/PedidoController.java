@@ -52,13 +52,13 @@ public class PedidoController {
     }
 
     @GetMapping("/finalizados")
-    public ResponseEntity<?> getPedidosFinalizados() {
+    public ResponseEntity<String> getPedidosFinalizados() {
         List<Pedido> finalizados = pedidoService.findPedidosFinalizados();
 
         if (finalizados.isEmpty()) {
             return new ResponseEntity<>("Não foi encontrado nenhum pedido", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(finalizados);
+        return ResponseEntity.ok(finalizados.toString());
     }
 }

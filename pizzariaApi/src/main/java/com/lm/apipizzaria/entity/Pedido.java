@@ -10,23 +10,22 @@ public class Pedido extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "pedido_id")
-    private Long pedido_ID;
+    private Long pedidoid;
 
 
     @Getter @Setter
     @Column(name = "produto_id")
-    private int produto_ID;
+    private int produtoid;
 
     @Column(name = "cliente_id")
     @Getter @Setter
-    private int cliente_ID;
-
+    private int clienteid;
     @Getter @Setter
     private String observacao;
 
     @Getter @Setter
     @Column(name = "funcionario_id")
-    private int funcionario_ID;
+    private int funcionarioid;
 
     @Getter @Setter
     private String status;

@@ -12,10 +12,10 @@ public class Produto extends AbstractEntity {
     private String sabor;
 
     @Getter @Setter
-    private String produto_item;
+    private String produtoitem;
 
     @Getter @Setter
-    private int produto_preco;
+    private int produtopreco;
 
     @Getter @Setter
     @ManyToOne
@@ -23,6 +23,7 @@ public class Produto extends AbstractEntity {
     private Pedido pedidos;
 
     private Tamanho tamanho;
+
 
     public String getSabor() {
         return sabor;
@@ -35,20 +36,20 @@ public class Produto extends AbstractEntity {
     public Produto() {
     }
 
-    public String getProduto_item() {
-        return produto_item;
+    public String getProdutoitem() {
+        return produtoitem;
     }
 
-    public void setProduto_item(String produto_item) {
-        this.produto_item = produto_item;
+    public void setProdutoitem(String produtoitem) {
+        this.produtoitem = produtoitem;
     }
 
-    public int getProduto_preco() {
-        return produto_preco;
+    public int getProdutopreco() {
+        return produtopreco;
     }
 
-    public void setProduto_preco(int produto_preco) {
-        this.produto_preco = produto_preco;
+    public void setProdutopreco(int produtopreco) {
+        this.produtopreco = produtopreco;
     }
 
     public Tamanho getTamanho() {
@@ -61,9 +62,9 @@ public class Produto extends AbstractEntity {
 
 
 
-    public Produto(String produto_item, int produto_preco, Pedido pedidos, Tamanho tamanho, String sabor) {
-        this.produto_item = produto_item;
-        this.produto_preco = produto_preco;
+    public Produto(String produtoitem, int produtopreco, Pedido pedidos, Tamanho tamanho, String sabor) {
+        this.produtoitem = produtoitem;
+        this.produtopreco = produtopreco;
         this.pedidos = pedidos;
         this.tamanho = tamanho;
         this.sabor = sabor;

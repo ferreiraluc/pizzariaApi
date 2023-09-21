@@ -12,13 +12,18 @@ import org.springframework.stereotype.Service;
 public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
-    private final ClienteRepository clienteRepository;
+
 
     @Autowired
     public ProdutoService(ProdutoRepository produtoRepository,
                           ClienteRepository clienteRepository) {
         this.produtoRepository = produtoRepository;
-        this.clienteRepository = clienteRepository;
+    }
+
+    public class InvalidPizzaSizeException extends RuntimeException {
+        public InvalidPizzaSizeException(String message) {
+            super(message);
+        }
     }
 
     public Produto findById(Long id) {
@@ -29,21 +34,19 @@ public class ProdutoService {
         Tamanho tamanho = produto.getTamanho();
 
         if (tamanho == Tamanho.P) {
-            produto.setProduto_preco(50);
+            produto.setProdutopreco(50);
             verificarQuantidadeSabores(produto, 1);
         } else if (tamanho == Tamanho.M) {
-            produto.setProduto_preco(60);
-            verificarQuantidadeSabores(produto, 2);
-        } else if (tamanho == Tamanho.G) {
-            produto.setProduto_preco(80);
+            produto.setProdutopreco(80);
             verificarQuantidadeSabores(produto, 3);
         } else if (tamanho == Tamanho.GG){
-            produto.setProduto_preco(100);
+            produto.setProdutopreco(100);
             verificarQuantidadeSabores(produto, 3);
         }
         else {
-            throw new RuntimeException("Tamanho de pizza inválido.");
-        }
+            throw new InvalidPizzaSizeException("Tamanho de pizza inválido.");
+            }
+
 
         return produtoRepository.save(produto);
     }
@@ -52,14 +55,14 @@ public class ProdutoService {
         String sabor = produto.getSabor();
 
         if (sabor == null || sabor.isEmpty()) {
-            throw new RuntimeException("Você precisa cadastrar pelo menos um sabor.");
+            throw new InvalidPizzaSizeException("Você precisa cadastrar pelo menos um sabor.");
         }
 
         String[] sabores = sabor.split(","); // Suponha que os sabores sejam separados por vírgula
         int quantidadeSabores = sabores.length;
 
         if (quantidadeSabores != quantidadePermitida) {
-            throw new RuntimeException("Número de sabores incorreto para o tamanho da pizza.");
+            throw new InvalidPizzaSizeException("Número de sabores incorreto para o tamanho da pizza.");
         }
     }
 
@@ -69,7 +72,7 @@ public class ProdutoService {
         produtoRepository.delete(produto);
     }
 
-    public Produto atualizarProduto(Long produtoId, String novoSabor, String novoProduto_item, int novoProduto_preco, Pedido novoPedidos, Tamanho novoTamanho) {
+    public Produto atualizarProduto(Long produtoId, String novoSabor, String novoProdutoitem, int novoProdutopreco, Pedido novoPedidos, Tamanho novoTamanho) {
 
         Produto produto = produtoRepository.findById(produtoId)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
@@ -78,11 +81,11 @@ public class ProdutoService {
         if (novoSabor != null) {
             produto.setSabor(novoSabor);
         }
-        if (novoProduto_item != null) {
-            produto.setProduto_item(novoProduto_item);
+        if (novoProdutoitem != null) {
+            produto.setProdutoitem(novoProdutoitem);
         }
-        if (novoProduto_preco != 0) {
-            produto.setProduto_preco(novoProduto_preco);
+        if (novoProdutopreco != 0) {
+            produto.setProdutopreco(novoProdutopreco);
         }
         if (novoPedidos != null){
             produto.setPedidos(novoPedidos);
