@@ -1,5 +1,5 @@
 package com.lm.apipizzaria.controller;
-import com.lm.apipizzaria.dto.ResumoPedidosDTO;
+
 import com.lm.apipizzaria.entity.Funcionario;
 import com.lm.apipizzaria.entity.Pedido;
 import com.lm.apipizzaria.service.BalcaoService;
@@ -79,14 +79,6 @@ public class BalcaoController {
         return ResponseEntity.ok(funcionarios);
     }
 
-    @GetMapping("/resumo-pedidos")
-    public ResponseEntity<ResumoPedidosDTO> getResumoPedidos() {
-        long pedidosEmAndamento = balcaoService.countPedidosPendentes();
-        long pedidosFinalizados = balcaoService.countPedidosFinalizados();
-
-        ResumoPedidosDTO resumo = new ResumoPedidosDTO(pedidosEmAndamento, pedidosFinalizados);
-        return ResponseEntity.ok(resumo);
-    }
 
 
 
