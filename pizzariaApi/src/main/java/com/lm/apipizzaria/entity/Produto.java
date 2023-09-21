@@ -1,5 +1,6 @@
 package com.lm.apipizzaria.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,12 @@ public class Produto extends AbstractEntity {
     @Getter @Setter
     private String sabor;
 
+    @JsonProperty("produto_item")
     @Getter @Setter
     private String produtoitem;
 
+    @JsonProperty("produto_preco")
+    @Column(name = "produto_preco")
     @Getter @Setter
     private int produtopreco;
 

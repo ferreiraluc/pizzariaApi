@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PedidoControllerTest {
+class PedidoControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -31,7 +31,7 @@ public class PedidoControllerTest {
     private PedidoService pedidoService;
 
     @Test
-    public void testGetAllPedidos() throws Exception {
+    void testGetAllPedidos() throws Exception {
         Pedido pedido = new Pedido();
         given(pedidoService.findAll()).willReturn(Arrays.asList(pedido));
 
@@ -40,7 +40,7 @@ public class PedidoControllerTest {
     }
 
     @Test
-    public void testCreatePedido() throws Exception {
+    void testCreatePedido() throws Exception {
         Pedido newPedido = new Pedido();
         given(pedidoService.save(newPedido)).willReturn(newPedido);
 
@@ -52,7 +52,7 @@ public class PedidoControllerTest {
 
 
     @Test
-    public void testUpdatePedido() throws Exception {
+    void testUpdatePedido() throws Exception {
         Pedido originalPedido = new Pedido();
         Pedido updatedPedido = new Pedido();
         given(pedidoService.findById(1)).willReturn(Optional.of(originalPedido));
@@ -66,7 +66,7 @@ public class PedidoControllerTest {
 
 
     @Test
-    public void testDeletePedido() throws Exception {
+    void testDeletePedido() throws Exception {
         Pedido pedidoToDelete = new Pedido();
         given(pedidoService.findById(1)).willReturn(Optional.of(pedidoToDelete));
 
@@ -76,7 +76,7 @@ public class PedidoControllerTest {
 
 
     @Test
-    public void testGetPedidosFinalizados() throws Exception {
+    void testGetPedidosFinalizados() throws Exception {
         Pedido finalizadoPedido = new Pedido();
         given(pedidoService.findPedidosFinalizados()).willReturn(Arrays.asList(finalizadoPedido));
 

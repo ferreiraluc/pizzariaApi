@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BalcaoControllerTest {
+class BalcaoControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -36,7 +36,7 @@ public class BalcaoControllerTest {
 
 
     @Test
-    public void testVisualizarTodosPedidos() throws Exception {
+    void testVisualizarTodosPedidos() throws Exception {
         Pedido pedido = new Pedido();
         given(balcaoService.visualizarTodosPedidos()).willReturn(Arrays.asList(pedido));
 
@@ -45,7 +45,7 @@ public class BalcaoControllerTest {
     }
 
     @Test
-    public void testVisualizarPedidosFinalizados() throws Exception {
+    void testVisualizarPedidosFinalizados() throws Exception {
         Pedido pedido = new Pedido();
         given(balcaoService.visualizarPedidosFinalizados()).willReturn(Arrays.asList(pedido));
 
@@ -54,7 +54,7 @@ public class BalcaoControllerTest {
     }
 
     @Test
-    public void testVisualizarPedidosPendentes() throws Exception {
+    void testVisualizarPedidosPendentes() throws Exception {
         Pedido pedido = new Pedido();
         given(balcaoService.visualizarPedidosPendentes()).willReturn(Arrays.asList(pedido));
 
@@ -63,7 +63,7 @@ public class BalcaoControllerTest {
     }
 
     @Test
-    public void testVisualizarTodosFuncionarios() throws Exception {
+    void testVisualizarTodosFuncionarios() throws Exception {
         Funcionario funcionario = new Funcionario();
         given(funcionarioService.getAllFuncionarios()).willReturn(Arrays.asList(funcionario));
 

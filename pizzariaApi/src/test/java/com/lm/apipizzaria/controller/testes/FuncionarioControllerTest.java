@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class FuncionarioControllerTest {
+class FuncionarioControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -24,7 +24,7 @@ public class FuncionarioControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void funcionarioTestGetAll() throws Exception {
+    void funcionarioTestGetAll() throws Exception {
         Funcionario funcionario = new Funcionario("Lana", "7895231", "Rua XYZ");
 
         mockMvc.perform(post("/api/funcionario")
@@ -37,7 +37,7 @@ public class FuncionarioControllerTest {
     }
 
     @Test
-    public void funcionarioTestPost() throws Exception {
+    void funcionarioTestPost() throws Exception {
         Funcionario funcionario = new Funcionario("Lucas", "123456789", "Rua XYZ");
 
         mockMvc.perform(post("/api/funcionario")
@@ -47,7 +47,7 @@ public class FuncionarioControllerTest {
     }
 
     @Test
-    public void funcionarioTestPut() throws Exception {
+    void funcionarioTestPut() throws Exception {
         Funcionario funcionario = new Funcionario("Malia", "59452944", "Kennegiy");
         MvcResult result = mockMvc.perform(post("/api/funcionario")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -70,7 +70,7 @@ public class FuncionarioControllerTest {
 
 
     @Test
-    public void funcionarioTestDelete() throws Exception {
+    void funcionarioTestDelete() throws Exception {
         // Supondo que o ID do funcionário que você deseja deletar seja 1
         Long funcionarioIdToDelete = 1L;
 

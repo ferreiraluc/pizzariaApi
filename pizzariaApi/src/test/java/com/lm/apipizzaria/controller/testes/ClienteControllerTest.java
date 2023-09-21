@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ClienteControllerTest {
+class ClienteControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -31,7 +31,7 @@ public class ClienteControllerTest {
 
 
     @Test
-    public void clientetestgetall() throws Exception {
+    void clientetestgetall() throws Exception {
         Cliente cliente = new Cliente("Matheus", "9851578514", "Rua Blabla");
 
         mockMvc.perform(post(CLIENTE_API_PATH)
@@ -44,7 +44,7 @@ public class ClienteControllerTest {
     }
 
     @Test
-    public void clientetestpost() throws Exception {
+    void clientetestpost() throws Exception {
         Cliente cliente = new Cliente("Bruno", "98452716", "Centro");
         mockMvc.perform(post("/api/cliente")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -53,7 +53,7 @@ public class ClienteControllerTest {
     }
 
     @Test
-    public void clientetestdelete() throws Exception {
+    void clientetestdelete() throws Exception {
         Cliente cliente = new Cliente("Carlito", "5192281826", "Bairro");
 
         MvcResult postResult = mockMvc.perform(post(CLIENTE_API_PATH)
@@ -72,7 +72,7 @@ public class ClienteControllerTest {
     }
 
     @Test
-    public void clientetesteput() throws Exception {
+    void clientetesteput() throws Exception {
 
         Cliente cliente = new Cliente("Jeorge", "829282999", "AVendia");
 

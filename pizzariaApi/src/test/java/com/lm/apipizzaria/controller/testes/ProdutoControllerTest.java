@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProdutoControllerTest {
+class ProdutoControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,7 +33,7 @@ public class ProdutoControllerTest {
     private ProdutoService produtoService;
 
     @Test
-    public void testGetProdutoById() throws Exception {
+    void testGetProdutoById() throws Exception {
         Produto produto = new Produto("Pizza de Calabresa", 50, null, Tamanho.P, "Calabresa");
 
         MvcResult postResult =  mockMvc.perform(post("/api/produto")
@@ -53,13 +53,13 @@ public class ProdutoControllerTest {
     }
 
     @Test
-    public void testGetAllProdutos() throws Exception {
+    void testGetAllProdutos() throws Exception {
         mockMvc.perform(get("/api/produto"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void testCadastrarProduto() throws Exception {
+    void testCadastrarProduto() throws Exception {
         Produto produto = new Produto("NovaPizza", 50, null, Tamanho.P, "Margherita");
         mockMvc.perform(post("/api/produto")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -71,7 +71,7 @@ public class ProdutoControllerTest {
     }
 
     @Test
-    public void testDeletarProduto() throws Exception {
+    void testDeletarProduto() throws Exception {
         Produto produto = new Produto("Pizza a ser deletada", 50, null, Tamanho.P, "Quatro Queijos");
 
         MvcResult postResult =  mockMvc.perform(post("/api/produto")
@@ -90,7 +90,7 @@ public class ProdutoControllerTest {
     }
 
     @Test
-    public void testAtualizarProduto() throws Exception{
+    void testAtualizarProduto() throws Exception{
         Produto produto = new Produto("PizzaVelha", 50, null, Tamanho.P, "Lombinho");
 
         MvcResult postResult =  mockMvc.perform(post("/api/produto")
@@ -98,6 +98,7 @@ public class ProdutoControllerTest {
                         .content(objectMapper.writeValueAsString(produto)))
                 .andExpect(status().isOk())
                 .andReturn();
+
 
         Produto produtoCriado = objectMapper.readValue(postResult.getResponse().getContentAsString(), Produto.class);
         Long produtoCriadoId = produtoCriado.getId();
