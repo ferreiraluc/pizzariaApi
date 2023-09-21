@@ -5,36 +5,70 @@ import com.lm.apipizzaria.repository.ClienteRepository;
 import com.lm.apipizzaria.service.ClienteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
-public class ClienteServiceTest {
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-    private ClienteService clienteService;
+class ClienteServiceTest {
+
+    @InjectMocks
+    ClienteService clienteService;
 
     @Mock
-    private ClienteRepository clienteRepository;
+    ClienteRepository clienteRepository;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         MockitoAnnotations.initMocks(this);
-        clienteService = new ClienteService(clienteRepository);
     }
 
     @Test
-    public void testfindclientebyid() {
-        Cliente clienteMock = new Cliente();
-        clienteMock.setId(1L);
-        clienteMock.setNome("João");
+    void testBuscarporid() {
+        Cliente cliente = new Cliente();
+        when(clienteRepository.findById(1L)).thenReturn(Optional.of(cliente));
 
-        when(clienteRepository.findById(1L)).thenReturn(java.util.Optional.of(clienteMock));
+        Cliente result = clienteService.buscarporid(1L);
 
-        Cliente resultado = clienteService.buscarporid(1L);
+        assertEquals(cliente, result);
+    }
 
-        assertEquals(1L, resultado.getId());
-        assertEquals("João", resultado.getNome());
+    @Test
+    void testCriarcliente() {
+        Cliente cliente = new Cliente();
+        when(clienteRepository.save(cliente)).thenReturn(cliente);
+
+        Cliente result = clienteService.criarcliente(cliente);
+
+        assertEquals(cliente, result);
+    }
+
+    @Test
+    void testListarTodosClientes() {
+        Cliente cliente = new Cliente();
+        List<Cliente> clienteList = Collections.singletonList(cliente);
+        when(clienteRepository.findAll()).thenReturn(clienteList);
+
+        List<Cliente> results = clienteService.listarTodosClientes();
+
+        assertEquals(clienteList.size(), results.size());
+        assertEquals(clienteList.get(0), results.get(0));
+    }
+
+
+    @Test
+    void testDeletarcliente() {
+        Cliente cliente = new Cliente();
+        when(clienteRepository.findById(1L)).thenReturn(Optional.of(cliente));
+
+        clienteService.deletarcliente(1L);
+
+        verify(clienteRepository).delete(cliente);
     }
 }
