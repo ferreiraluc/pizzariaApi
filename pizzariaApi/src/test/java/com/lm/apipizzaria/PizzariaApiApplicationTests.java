@@ -8,6 +8,7 @@ class PizzariaApiApplicationTests {
 
     @Test
     void contextLoads(){
+        assert true;
     }
 
 }
