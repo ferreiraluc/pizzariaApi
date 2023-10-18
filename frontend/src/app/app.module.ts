@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BalcaolistComponent } from './components/balcao/balcaolist/balcaolist.component';
@@ -13,7 +12,11 @@ import { PedidoslistComponent } from './components/pedidos/pedidoslist/pedidosli
 import { PedidosdetailsComponent } from './components/pedidos/pedidosdetails/pedidosdetails.component';
 import { ProdutoslistComponent } from './components/produtos/produtoslist/produtoslist.component';
 import { ProdutosdetailsComponent } from './components/produtos/produtosdetails/produtosdetails.component';
-
+import { LoginComponent } from './components/sistema/login/login.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { IndexComponent } from './components/layout/index/index.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,10 +31,15 @@ import { ProdutosdetailsComponent } from './components/produtos/produtosdetails/
     PedidosdetailsComponent,
     ProdutoslistComponent,
     ProdutosdetailsComponent,
+    LoginComponent,
+    FooterComponent,
+    HeaderComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
