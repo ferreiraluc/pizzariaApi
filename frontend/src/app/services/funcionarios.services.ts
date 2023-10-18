@@ -10,7 +10,7 @@ import { Funcionario } from "../models/funcionario";
 export class FuncionarioService{
     API: string = 'http://localhost:8080/api/funcionario';
     http = inject(HttpClient);
-
+   
     constructor(){}
 
     listAll(): Observable<Funcionario[]>{
