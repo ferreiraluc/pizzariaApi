@@ -2,3 +2,29 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+
+.btn-round {
+    border-radius: 50px; 
+    padding: 10px 20px; 
+    background-color: #9c9c9c; 
+    color: #fff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Estilo de hover */
+  .btn-round:hover {
+    background-color: #ff6600; 
+    transform: scale(1.05); 
+  }
+  
+  /* Estilo de foco (quando o botão é clicado) */
+  .btn-round:focus {
+    outline: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+
+  .btn-space {
+    margin-right: 10px; /* Ajuste o valor conforme necessário para o espaço desejado */
+  }
