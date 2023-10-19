@@ -1,1 +1,46 @@
-<p>produtoslist works!</p>
+<div class="container">
+    <h3 class="alert alert-primary">Listagem de produtos!</h3>
+    <td> <button class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button> </td>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Sabor</th>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Tamanho</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let produto of lista; let i = index">
+                        <th scope="row">{{ produto.id }}</th>
+                        <td> {{ produto.sabor }} </td>
+                        <td> {{ produto.produtoitem }} </td>
+                        <td> {{ produto.tamanho }} </td>
+                        <td> {{ produto.produtopreco | currency:'BRL' }} </td>
+                        <td>
+                            <button class="btn btn-primary mx-2" (click)="editar(modal1, produto, i)">Editar</button>
+                            <button class="btn btn-danger mx-2" (click)="excluir(produto)">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-produtosdetails [produto]="produtoSelecionadoParaEdicao" (retorno)="addOuEditarProduto($event)"></app-produtosdetails>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

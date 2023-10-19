@@ -1,1 +1,19 @@
-<p>produtosdetails works!</p>
+<form (ngSubmit)="addProduto()">
+    <div class="mb-3">
+        <label for="sabor" class="form-label">Sabor</label>
+        <input type="text" class="form-control" id="sabor" name="sabor" aria-describedby="emailHelp" [(ngModel)]="produto.sabor">
+    </div>
+    <div class="mb-3">
+        <label for="produtoitem" class="form-label">Produto</label>
+        <input type="text" class="form-control" id="produtoitem" name="produtoitem" [(ngModel)]="produto.produtoitem">
+    </div>
+    <div class="mb-3">
+        <label for="produtopreco" class="form-label">Preço</label>
+        <input type="number" class="form-control" id="produtopreco" name="produtopreco" [(ngModel)]="produto.produtopreco">
+    </div>
+    <div class="mb-3">
+        <label for="tamanho" class="form-label">Tamanho</label>
+        <input type="text" class="form-control" id="tamanho" name="tamanho" [(ngModel)]="produto.tamanho">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
