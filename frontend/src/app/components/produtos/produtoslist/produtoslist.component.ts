@@ -51,13 +51,13 @@ editar(modal: any, produto: Produto, indice: number) {
 }
 
 excluir(produto: Produto) {
-  if (confirm('Deseja realmente excluir o carro ' + produto.produtoitem + '?')) {
+  if (confirm('Deseja realmente excluir o produto ' + produto.produtoitem + '?')) {
     this.produtoService.delete(produto.id).subscribe({
       next: () => {
         this.listAll();
       },
       error: erro => {
-        alert('Erro ao excluir livro! Observe o erro no console!');
+        alert('Erro ao excluir Produto! Observe o erro no console!');
         console.error(erro);
       }
     });
