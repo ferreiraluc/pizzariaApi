@@ -8,6 +8,8 @@ import { PedidoslistComponent } from './components/pedidos/pedidoslist/pedidosli
 import { FuncionarioslistComponent } from './components/funcionarios/funcionarioslist/funcionarioslist.component';
 import { ClienteslistComponent } from './components/clientes/clienteslist/clienteslist.component';
 
+
+
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full' },
   { path: "login", component: LoginComponent },

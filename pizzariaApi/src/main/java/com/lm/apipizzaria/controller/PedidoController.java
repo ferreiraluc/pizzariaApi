@@ -10,7 +10,8 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pedidos")
+@RequestMapping("/api/pedido")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PedidoController {
 
     @Autowired
