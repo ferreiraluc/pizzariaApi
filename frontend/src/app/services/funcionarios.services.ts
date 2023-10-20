@@ -25,11 +25,16 @@ export class FuncionarioService{
         const url = `${this.API}/${id}`;
         return this.http.get<Funcionario>(url);
     }
+//  explicar para o lucas que neste caso o erro estava acontecendo pq o observable estava sendo direcinado para o FUNCIONARIO como um lista Json sendo que na API o delete é simplesmente retornado
+//uma mensagem de texto simples oq na hora da comparação ppedia um retorno Json no Front e o Back retornava um text como response
+//após explicar mudar em todas as services para funcionamento do codigo
+//também tera de alterar no funcionariodetails.component.ts adicionando o metodo de excluir
 
-    delete(id: number): Observable<Funcionario>{
+    delete(id: number): Observable<string> {
         const url = `${this.API}/${id}`;
-        return this.http.delete<Funcionario>(url);
-    }
+        return this.http.delete(url, { responseType: 'text' });
+      }
+      
 
     update(id: number, funcionario: Funcionario): Observable<Funcionario>{
         const url = `${this.API}/${id}`;
