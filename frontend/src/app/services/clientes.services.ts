@@ -28,9 +28,9 @@ constructor(){}
         return this.http.get<Cliente>(url);
     }
 
-    delete(id: number): Observable<Cliente>{
+    delete(id: number): Observable<string>{
         const url = `${this.API}/${id}`;
-        return this.http.delete<Cliente>(url);
+        return this.http.delete(url, {responseType: 'text'});
     }
 
     update(id: number, cliente: Cliente): Observable<Cliente>{

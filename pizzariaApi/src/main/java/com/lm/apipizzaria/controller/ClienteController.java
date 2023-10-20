@@ -1,5 +1,6 @@
 package com.lm.apipizzaria.controller;
 
+import com.lm.apipizzaria.entity.Funcionario;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lm.apipizzaria.entity.Cliente;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cliente")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
 
     @Autowired
@@ -27,14 +29,9 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<String> findAll() {
-        List<Cliente> clientes = this.clienteRepository.findAll();
+    public List<Cliente> getAllClientes(){
+        return clienteRepository.findAll();
 
-        if (clientes.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.ok().body("Ok");
     }
     @PostMapping
     public ResponseEntity<Cliente> cadastrar(@RequestBody Cliente cliente) {

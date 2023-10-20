@@ -17,6 +17,12 @@ export class ProdutosdetailsComponent {
 
   constructor(private http: HttpClient) { }
 
+  getProdutos(){
+    this.produtosService.listAll().subscribe((data: any) => {
+      this.produto = data;
+    });
+  }
+
   addProduto() {
     // Crie um objeto com os dados do formulário
     const jsonData = JSON.stringify(this.produto);
@@ -31,7 +37,7 @@ export class ProdutosdetailsComponent {
       .subscribe(
         response => {
           console.log('Dados enviados com sucesso:', response);
-          // Faça o que for necessário com a resposta da API
+          window.location.reload();
         },
         error => {
           console.error('Erro ao enviar os dados para a API:', error);

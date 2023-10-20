@@ -16,6 +16,12 @@ export class PedidosdetailsComponent {
   pedidoService = inject(PedidoService);
 
   constructor(private http: HttpClient) { }
+  
+  getPedidos(){
+    this.pedidoService.listAll().subscribe((data: any) =>{
+      this.pedido = data;
+    });
+  }
 
   addPedido() {
      // Crie um objeto com os dados do formulário
@@ -31,12 +37,24 @@ export class PedidosdetailsComponent {
        .subscribe(
          response => {
            console.log('Dados enviados com sucesso:', response);
-           // Faça o que for necessário com a resposta da API
+           window.location.reload();
          },
          error => {
            console.error('Erro ao enviar os dados para a API:', error);
          }
        );
+  }
+
+  deletePedido(id: number){
+    this.pedidoService.delete(id).subscribe(
+      response => {
+        console.log('Pedido excluído com sucesso:' , response);
+        window.location.reload();
+      },
+      error => {
+        console.error('Erro ao excluir o pedido:', error);
+      }
+    );
   }
   
 

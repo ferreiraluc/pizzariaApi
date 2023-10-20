@@ -1,5 +1,6 @@
 package com.lm.apipizzaria.controller;
 
+import com.lm.apipizzaria.entity.Cliente;
 import com.lm.apipizzaria.entity.Pedido;
 import com.lm.apipizzaria.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,13 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createPedido(@RequestBody Pedido pedido) {
-        pedidoService.save(pedido);
-        return new ResponseEntity<>("Pedido criado com sucesso!", HttpStatus.CREATED);
+    public ResponseEntity<Pedido> createPedido(@RequestBody Pedido pedido) {
+        try {
+            Pedido novoPedido = pedidoService.save(pedido);
+            return ResponseEntity.ok(novoPedido);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 
     @PutMapping("/{id}")

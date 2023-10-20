@@ -26,10 +26,10 @@ export class ProdutoslistComponent {
    listAll() {
       
     this.produtoService.listAll().subscribe({
-      next: lista => { // QUANDO DÁ CERTO
+      next: (lista: Produto[]) => { // QUANDO DÁ CERTO
         this.lista = lista;
       },
-      error: erro => { // QUANDO DÁ ERRO
+      error: (erro: any) => { // QUANDO DÁ ERRO
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
       }
