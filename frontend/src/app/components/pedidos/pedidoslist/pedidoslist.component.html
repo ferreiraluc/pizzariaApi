@@ -1,1 +1,46 @@
-<p>pedidoslist works!</p>
+<div class="container">
+    <h1>Pedidos</h1>
+    <td> <button class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button> </td>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Itens</th>
+                <th>Cliente</th>
+                <th>Endereço</th>
+                <th>Observação</th>
+                <th>Status</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of lista, let i=index">
+                <td>{{ pedido.id }}</td>
+                <td>{{ pedido.produtoid }}</td>
+                <td>{{ pedido.clienteid }}</td>
+                <td>{{ pedido.entrega }}</td>
+                <td>{{ pedido.observacao }}</td>
+                <td>{{ pedido.status }}</td>
+                <td>
+                    <button class="btn btn-primary mx-2" (click)="editar(modal1, pedido, i)">Editar</button>
+                    <button class="btn btn-danger mx-2" (click)="excluir(pedido)">Deletar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-pedidosdetails [pedido]="pedidoSelecionadoParaEdicao" (retorno)="addOuEditarPedido($event)"></app-pedidosdetails>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+

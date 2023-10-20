@@ -1,4 +1,4 @@
-import { Produto } from "./Produto";
+import { Produto } from "./produto";
 import { Cliente } from "./cliente";
 import { Funcionario } from "./funcionario";
 

@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Produto } from 'src/app/models/produto';
 import { ProdutosService } from 'src/app/services/produtos.services';
@@ -14,19 +15,28 @@ export class ProdutosdetailsComponent {
 
   produtosService = inject(ProdutosService);
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   addProduto() {
-    this.produtosService.save(this.produto).subscribe({
-      next: produto => {
-        this.retorno.emit(produto);
-        alert('Produto adicionado com sucesso!');
-      },
-      error: erro => {
-        alert('Erro ao adicionar produto! Observe o erro no console!');
-        console.error(erro);
-      }
+    // Crie um objeto com os dados do formulário
+    const jsonData = JSON.stringify(this.produto);
+
+    // Defina os cabeçalhos para indicar que você está enviando JSON
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
     });
+
+    // Faça a solicitação HTTP POST para a sua API
+    this.http.post('http://localhost:8080/api/produto', jsonData, { headers: headers })
+      .subscribe(
+        response => {
+          console.log('Dados enviados com sucesso:', response);
+          // Faça o que for necessário com a resposta da API
+        },
+        error => {
+          console.error('Erro ao enviar os dados para a API:', error);
+        }
+      );
   }
 
 
