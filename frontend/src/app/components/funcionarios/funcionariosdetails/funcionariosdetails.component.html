@@ -1,1 +1,15 @@
-<p>funcionariosdetails works!</p>
+<form (ngSubmit)="addFuncionario()">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" [(ngModel)]="funcionario.nome">
+    </div>
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="telefone" name="telefone" [(ngModel)]="funcionario.telefone">
+    </div>
+    <div class="mb-3">
+        <label for="endereco" class="form-label">Endereço</label>
+        <input type="text" class="form-control" id="endereco" name="endereco" [(ngModel)]="funcionario.endereco">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
