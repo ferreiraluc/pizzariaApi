@@ -57,7 +57,7 @@ export class FuncionarioslistComponent {
           this.listAll();
         },
         error: erro => {
-          alert('Erro ao excluir Produto! Observe o erro no console!');
+          alert('Erro ao excluir Funcionario! Observe o erro no console!');
           console.error(erro);
         }
       });

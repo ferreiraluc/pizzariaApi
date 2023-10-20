@@ -26,9 +26,9 @@ export class ProdutosService {
         return this.http.get<Produto>(url);
     }
 
-    delete(id: number): Observable<Produto>{
+    delete(id: number): Observable<string>{
         const url = `${this.API}/${id}`;
-        return this.http.delete<Produto>(url);
+        return this.http.delete(url, {responseType: 'text'});
     }
 
     update(id: number, produto: Produto): Observable<Produto>{

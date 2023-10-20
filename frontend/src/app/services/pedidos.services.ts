@@ -27,9 +27,10 @@ export class PedidoService{
         return this.http.get<Pedido>(url);
     }
 
-    delete(id: number): Observable<Pedido>{
+   
+    delete(id: number): Observable<string>{
         const url = `${this.API}/${id}`;
-        return this.http.delete<Pedido>(url);
+        return this.http.delete(url, {responseType: 'text'});
     }
 
     update(id: number, pedido: Pedido): Observable<Pedido>{

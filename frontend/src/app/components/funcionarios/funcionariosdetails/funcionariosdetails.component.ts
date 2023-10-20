@@ -32,7 +32,7 @@ export class FuncionariosdetailsComponent {
     this.http.post('http://localhost:8080/api/funcionario', jsonData, { headers: headers })
       .subscribe(
         response => {
-          console.log('Dados enviados com sucesso:', response);
+          console.log('Dados cadastrado com sucesso:', response);
           window.location.reload();
         },
         error => {
