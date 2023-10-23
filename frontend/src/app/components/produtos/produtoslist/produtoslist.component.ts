@@ -51,7 +51,7 @@ editar(modal: any, produto: Produto, indice: number) {
 }
 
 excluir(produto: Produto) {
-  if (confirm('Deseja realmente excluir o produto ' + produto.produtoitem + '?')) {
+  if (confirm('Deseja realmente excluir o produto ' + produto.produto_item + '?')) {
     this.produtoService.delete(produto.id).subscribe({
       next: () => {
         this.listAll();
