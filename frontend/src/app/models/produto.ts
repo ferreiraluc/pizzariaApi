@@ -3,8 +3,8 @@ import { Tamanho } from "./tamanho"
 export class Produto{
     id!: number;
     sabor!: string;
-    produtoitem!: string;
-    produtopreco!: number;
+    produto_item!: string;
+    produto_preco!: number;
     tamanho!: Tamanho[];
     
 }

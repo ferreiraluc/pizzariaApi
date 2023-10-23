@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoService } from 'src/app/services/pedidos.services';
+import { Produto } from 'src/app/models/produto';
+import { ProdutosService } from 'src/app/services/produtos.services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -27,6 +29,7 @@ export class PedidoslistComponent {
     this.pedidoService.listAll().subscribe({
       next: (lista: Pedido[]) => { // QUANDO DÁ CERTO
         this.lista = lista;
+        
       },
       error: (erro: any) => { // QUANDO DÁ ERRO
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');

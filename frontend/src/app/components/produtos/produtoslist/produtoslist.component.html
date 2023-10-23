@@ -18,9 +18,10 @@
                     <tr *ngFor="let produto of lista; let i = index">
                         <th scope="row">{{ produto.id }}</th>
                         <td> {{ produto.sabor }} </td>
-                        <td> {{ produto.produtoitem }} </td>
+                        <td> {{ produto.produto_item }} </td>
+                        <td> {{ produto.produto_preco }} </td>
                         <td> {{ produto.tamanho }} </td>
-                        <td> {{ produto.produtopreco | currency:'BRL' }} </td>
+                       
                         <td>
                             <button class="btn btn-primary mx-2" (click)="editar(modal1, produto, i)">Editar</button>
                             <button class="btn btn-danger mx-2" (click)="excluir(produto)">Deletar</button>
