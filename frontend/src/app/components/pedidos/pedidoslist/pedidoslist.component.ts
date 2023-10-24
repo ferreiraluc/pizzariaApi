@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoService } from 'src/app/services/pedidos.services';
 import { Produto } from 'src/app/models/produto';
@@ -10,7 +10,17 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './pedidoslist.component.html',
   styleUrls: ['./pedidoslist.component.scss']
 })
-export class PedidoslistComponent {
+export class PedidoslistComponent implements OnInit {
+
+  produtos: Produto[] = [];
+
+  ngOnInit() {
+    
+    this.produtosService.listAll().subscribe((lista: Produto[]) => {
+      this.produtos = lista;
+    });
+    
+  }
 
 
   lista: Pedido[] = [];
@@ -20,7 +30,7 @@ export class PedidoslistComponent {
 
   modalService = inject(NgbModal);
   pedidoService = inject(PedidoService);
-  constructor() {
+  constructor(private produtosService: ProdutosService) {
     this.listAll();
    }
 
@@ -72,6 +82,20 @@ export class PedidoslistComponent {
 
     this.modalService.dismissAll();
   }
+
+  getNomeDoProduto(produtoid: number): string {
+    
+    const produto = this.produtos.find(p => p.id === produtoid);
+  
+
+    if (produto) {
+      return produto.sabor;
+    } else {
+      return 'Produto não encontrado';
+    }
+  }
+  
+  
 
 
 

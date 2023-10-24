@@ -1,6 +1,8 @@
 package com.lm.apipizzaria.service;
 import com.lm.apipizzaria.entity.Pedido;
+import com.lm.apipizzaria.entity.Produto;
 import com.lm.apipizzaria.repository.PedidoRepository;
+import com.lm.apipizzaria.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -9,8 +11,13 @@ import java.util.Optional;
 @Service
 public class PedidoService {
 
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
+
     @Autowired
     private PedidoRepository pedidoRepository;
+
 
     public List<Pedido> findAll() {
         return pedidoRepository.findAll();
@@ -21,6 +28,16 @@ public class PedidoService {
     }
 
     public Pedido save(Pedido pedido) {
+
+        Optional<Produto> produtoOptional = produtoRepository.findById(pedido.getPedidoid());
+
+        if(produtoOptional.isPresent()){
+            Produto produto = produtoOptional.get();
+            pedido.setNomepizza(produto.getSabor());
+        } else {
+            pedido.setNomepizza("Pizza não encontrada");
+        }
+
         return pedidoRepository.save(pedido);
     }
 
@@ -31,6 +48,10 @@ public class PedidoService {
     public List<Pedido> findPedidosFinalizados() {
         return pedidoRepository.findByStatus("finalizado");
     }
+
+
+
+
 
 
 }

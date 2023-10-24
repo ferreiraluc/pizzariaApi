@@ -14,18 +14,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pedido of lista, let i=index">
-                <td>{{ pedido.id }}</td>
-                <td>{{ pedido.produtoid }}</td>
-                <td>{{ pedido.clienteid }}</td>
-                <td>{{ pedido.entrega }}</td>
-                <td>{{ pedido.observacao }}</td>
-                <td>{{ pedido.status }}</td>
-                <td>
-                    <button class="btn btn-primary mx-2" (click)="editar(modal1, pedido, i)">Editar</button>
-                    <button class="btn btn-danger mx-2" (click)="excluir(pedido)">Deletar</button>
-                </td>
-            </tr>
+            <tr *ngFor="let pedido of lista, let i = index">
+    <td>{{ pedido.id }}</td>
+    <td>{{ pedido.nomepizza }}</td>
+    <td>{{ pedido.clienteid }}</td>
+    <td>{{ pedido.entrega }}</td>
+    <td>{{ pedido.observacao }}</td>
+    <td>{{ pedido.status }}</td>
+    <td>
+      <button class="btn btn-primary mx-2" (click)="editar(modal1, pedido, i)">Editar</button>
+      <button class="btn btn-danger mx-2" (click)="excluir(pedido)">Deletar</button>
+    </td>
+  </tr>
         </tbody>
     </table>
 </div>

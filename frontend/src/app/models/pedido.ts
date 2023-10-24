@@ -4,6 +4,7 @@ import { Funcionario } from "./funcionario";
 
 export class Pedido{
     id!: number;
+    nomepizza!: string;
     produtoid!: Produto[];
     clienteid!: Cliente[];
     funcionarioid!: Funcionario[];

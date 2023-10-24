@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "pedidos", schema = "public")
 public class Pedido extends AbstractEntity {
@@ -12,6 +14,8 @@ public class Pedido extends AbstractEntity {
     @Column(name = "pedido_id")
     private Long pedidoid;
 
+    @Getter @Setter
+    private String nomepizza;
 
     @Getter @Setter
     @Column(name = "produto_id")
@@ -32,6 +36,7 @@ public class Pedido extends AbstractEntity {
 
     @Getter @Setter
     private boolean entrega;
+
 
 
 }
