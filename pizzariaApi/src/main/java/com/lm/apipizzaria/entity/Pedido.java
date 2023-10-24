@@ -32,7 +32,7 @@ public class Pedido extends AbstractEntity {
     @Getter @Setter
     @Column(name = "produto_id")
     private int produtoid;
-
+    
 
     @Getter @Setter
     private String observacao;
