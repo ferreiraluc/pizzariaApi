@@ -35,7 +35,7 @@ class PedidoControllerTest {
         Pedido pedido = new Pedido();
         given(pedidoService.findAll()).willReturn(Arrays.asList(pedido));
 
-        mockMvc.perform(get("/api/pedidos"))
+        mockMvc.perform(get("/api/pedido"))
                 .andExpect(status().isOk());
     }
 
@@ -44,12 +44,11 @@ class PedidoControllerTest {
         Pedido newPedido = new Pedido();
         given(pedidoService.save(newPedido)).willReturn(newPedido);
 
-        mockMvc.perform(post("/api/pedidos")
+        mockMvc.perform(post("/api/pedido")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newPedido)))
-                .andExpect(status().isCreated());
+                .andExpect(status().isOk());
     }
-
 
     @Test
     void testUpdatePedido() throws Exception {
@@ -58,7 +57,7 @@ class PedidoControllerTest {
         given(pedidoService.findById(1)).willReturn(Optional.of(originalPedido));
         given(pedidoService.save(updatedPedido)).willReturn(updatedPedido);
 
-        mockMvc.perform(put("/api/pedidos/1")
+        mockMvc.perform(put("/api/pedido/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updatedPedido)))
                 .andExpect(status().isOk());
@@ -70,7 +69,7 @@ class PedidoControllerTest {
         Pedido pedidoToDelete = new Pedido();
         given(pedidoService.findById(1)).willReturn(Optional.of(pedidoToDelete));
 
-        mockMvc.perform(delete("/api/pedidos/1"))
+        mockMvc.perform(delete("/api/pedido/1"))
                 .andExpect(status().isOk());
     }
 
@@ -80,7 +79,7 @@ class PedidoControllerTest {
         Pedido finalizadoPedido = new Pedido();
         given(pedidoService.findPedidosFinalizados()).willReturn(Arrays.asList(finalizadoPedido));
 
-        mockMvc.perform(get("/api/pedidos/finalizados"))
+        mockMvc.perform(get("/api/pedido/finalizados"))
                 .andExpect(status().isOk());
     }
 

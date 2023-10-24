@@ -24,6 +24,8 @@ public class Pedido extends AbstractEntity {
     @Column(name = "cliente_id")
     @Getter @Setter
     private int clienteid;
+
+    
     @Getter @Setter
     private String observacao;
 

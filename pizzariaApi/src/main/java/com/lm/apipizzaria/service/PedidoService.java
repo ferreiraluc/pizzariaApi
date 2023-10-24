@@ -28,16 +28,6 @@ public class PedidoService {
     }
 
     public Pedido save(Pedido pedido) {
-
-        Optional<Produto> produtoOptional = produtoRepository.findById(pedido.getPedidoid());
-
-        if(produtoOptional.isPresent()){
-            Produto produto = produtoOptional.get();
-            pedido.setNomepizza(produto.getSabor());
-        } else {
-            pedido.setNomepizza("Pizza não encontrada");
-        }
-
         return pedidoRepository.save(pedido);
     }
 
