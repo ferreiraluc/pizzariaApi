@@ -11,4 +11,8 @@ export class Pedido{
     observacao!: string;
     status!: string;
     entrega!: boolean;   
+
+    getNomeDoCliente(cliente: Cliente): string {
+        return cliente.nome;
+    }
 }

@@ -1,9 +1,11 @@
-import { Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoService } from 'src/app/services/pedidos.services';
 import { Produto } from 'src/app/models/produto';
 import { ProdutosService } from 'src/app/services/produtos.services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ClienteService } from 'src/app/services/clientes.services';
+import { Cliente } from 'src/app/models/cliente';
 
 @Component({
   selector: 'app-pedidoslist',
@@ -13,54 +15,56 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PedidoslistComponent implements OnInit {
 
   produtos: Produto[] = [];
-
-  ngOnInit() {
-    
-    this.produtosService.listAll().subscribe((lista: Produto[]) => {
-      this.produtos = lista;
-    });
-    
-  }
+  clientes: { [key: number]: Cliente } = {};
 
 
   lista: Pedido[] = [];
-
   pedidoSelecionadoParaEdicao: Pedido = new Pedido();
   indiceDoPedidoSelecionadoParaEdicao!: number;
 
   modalService = inject(NgbModal);
   pedidoService = inject(PedidoService);
-  constructor(private produtosService: ProdutosService) {
-    this.listAll();
-   }
 
-   listAll() {
-      
+  constructor(
+    private produtosService: ProdutosService,
+    private clienteService: ClienteService
+  ) {
+    this.listAll();
+  }
+
+  ngOnInit() {
+    this.produtosService.listAll().subscribe((lista: Produto[]) => {
+      this.produtos = lista;
+    });
+
+    this.clienteService.listAll().subscribe((clientes: Cliente[]) => {
+      clientes.forEach((cliente: Cliente) => {
+        this.clientes[cliente.id] = cliente;
+      });
+    });
+  }
+
+  listAll() {
     this.pedidoService.listAll().subscribe({
-      next: (lista: Pedido[]) => { // QUANDO DÁ CERTO
+      next: (lista: Pedido[]) => {
         this.lista = lista;
-        
       },
-      error: (erro: any) => { // QUANDO DÁ ERRO
+      error: (erro: any) => {
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
       }
     });
-
   }
 
   adicionar(modal: any) {
     this.pedidoSelecionadoParaEdicao = new Pedido();
     this.modalService.open(modal, { size: 'lg' });
-
   }
 
   editar(modal: any, pedido: Pedido, indice: number) {
     this.pedidoSelecionadoParaEdicao = Object.assign({}, pedido);
     this.indiceDoPedidoSelecionadoParaEdicao = indice;
-
     this.modalService.open(modal, { size: 'sm' });
-    
   }
 
   excluir(pedido: Pedido) {
@@ -79,24 +83,9 @@ export class PedidoslistComponent implements OnInit {
 
   addOuEditarPedido(pedido: Pedido) {
     this.listAll();
-
     this.modalService.dismissAll();
   }
-
-  getNomeDoProduto(produtoid: number): string {
-    
-    const produto = this.produtos.find(p => p.id === produtoid);
   
 
-    if (produto) {
-      return produto.sabor;
-    } else {
-      return 'Produto não encontrado';
-    }
-  }
   
-  
-
-
-
 }

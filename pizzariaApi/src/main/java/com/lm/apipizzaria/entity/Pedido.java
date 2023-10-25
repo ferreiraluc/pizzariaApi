@@ -17,15 +17,23 @@ public class Pedido extends AbstractEntity {
     @Getter @Setter
     private String nomepizza;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    private Cliente cliente;
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @Getter @Setter
     @Column(name = "produto_id")
     private int produtoid;
 
-    @Column(name = "cliente_id")
-    @Getter @Setter
-    private int clienteid;
 
-    
     @Getter @Setter
     private String observacao;
 
