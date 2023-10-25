@@ -37,6 +37,7 @@ export class PedidoService{
         const url = `${this.API}/${id}`;
         return this.http.put<Pedido>(url, pedido);
     }
+    
 }
 
 

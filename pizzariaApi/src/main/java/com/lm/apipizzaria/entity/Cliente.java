@@ -10,7 +10,6 @@ import lombok.Getter;
 @Table(name = "clientes", schema = "public")
 public class Cliente extends AbstractEntity {
 
-
     @Column(name = "Nome")
     private String nome;
 

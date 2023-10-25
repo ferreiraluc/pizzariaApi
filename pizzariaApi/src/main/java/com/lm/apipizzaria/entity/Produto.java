@@ -24,7 +24,7 @@ public class Produto extends AbstractEntity {
     @Getter @Setter
     @ManyToOne
     @JoinColumn(name = "pedidos_id")
-    private Pedido pedidos;
+    private Pedido pedido;
 
     private Tamanho tamanho;
 
@@ -69,17 +69,17 @@ public class Produto extends AbstractEntity {
     public Produto(String produtoitem, int produtopreco, Pedido pedidos, Tamanho tamanho, String sabor) {
         this.produtoitem = produtoitem;
         this.produtopreco = produtopreco;
-        this.pedidos = pedidos;
+        this.pedido = pedidos;
         this.tamanho = tamanho;
         this.sabor = sabor;
     }
 
     public Pedido getPedidos() {
-        return pedidos;
+        return pedido;
     }
 
     public void setPedidos(Pedido pedidos) {
-        this.pedidos = pedidos;
+        this.pedido = pedidos;
     }
 
 
