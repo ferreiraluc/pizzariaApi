@@ -19,14 +19,14 @@ public class Pedido extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente cliente;
+    private Cliente clienteid;
 
     public Cliente getCliente() {
-        return cliente;
+        return clienteid;
     }
 
     public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+        this.clienteid = cliente;
     }
 
     @Getter @Setter
